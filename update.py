@@ -2,7 +2,7 @@
 @Author: Kowaine
 @Description: 更新
 @Date: 2021-02-06 01:32:14
-@LastEditTime: 2021-02-06 12:10:52
+@LastEditTime: 2021-02-06 16:45:45
 """
 
 import time
@@ -80,6 +80,7 @@ def run():
     import requests
     import json
     import os
+    import time
 
     # 粉丝数量api
     API = "https://api.bilibili.com/x/relation/stat?vmid={uid}&jsonp=jsonp"
@@ -100,7 +101,7 @@ def run():
         
         # 创建文件或追加内容
         filename = os.path.join("data", "".join([up, ".txt"]))
-        content = "".join([get_formatted_time(), " ", str(data['data']['follower']), "\n"])
+        content = "".join([get_formatted_time(time.time()), " ", str(data['data']['follower']), "\n"])
         if os.path.exists(filename):
             with open(filename, "a", encoding="utf-8") as f:
                 f.write(content)
