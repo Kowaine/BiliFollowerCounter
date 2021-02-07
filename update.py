@@ -2,12 +2,12 @@
 @Author: Kowaine
 @Description: 更新
 @Date: 2021-02-06 01:32:14
-@LastEditTime: 2021-02-06 16:45:45
+@LastEditTime: 2021-02-07 20:30:20
 """
 
 import time
 
-def get_formatted_time(any_time=time.time()):
+def get_formatted_time(any_time=None):
     """
     获取格式化的时间字符串 \n
     @args: \n
@@ -15,6 +15,8 @@ def get_formatted_time(any_time=time.time()):
     @returns: \n 
         格式化后的时间字符串 :string
     """
+    if not any_time:
+        any_time = time.time()
     formatter = "{}_{:0>2d}{:0>2d}_{:0>2d}{:0>2d}{:0>2d}"
     temp_time = time.localtime(any_time)
     formatted_time = formatter.format(temp_time.tm_year, temp_time.tm_mon, temp_time.tm_mday, temp_time.tm_hour, temp_time.tm_min, temp_time.tm_sec)
